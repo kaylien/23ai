@@ -10,12 +10,17 @@ services:
       - "1522:1522"
       - "8443:8443"
       - "27017:27017"
-    volumes:
-      - "/home/oracle/scripts/db_config.sh:/scripts/db_config.sh"
-      - "/home/oracle/scripts/source.sh:/scripts/source.sh"
+    # volumes:
+    #   - "/home/oracle/scripts/entrypoint.sh:/u01/scripts/entrypoint.sh:Z"
+      - "/home/oracle/scripts/db-config.sh:/u01/scripts/db-config.sh:Z"
+      - "/home/oracle/scripts/reset-image-prefix.sql:/u01/scripts/reset-image-prefix.sql:Z"
+    #   - "/home/oracle/scripts/source.sh:/u01/scripts/source.sh:Z"
     devices:
       - /dev/fuse
     cap_add:
       - SYS_ADMIN
     restart: on-failure
-    command: sh -c "chmod +x /scripts/db_config.sh /scripts/source.sh && exec nginx -g 'daemon off;'"
+    # command: sh -c "chmod +x /u01/scripts/db_config.sh /u01/scripts/source.sh && exec nginx -g 'daemon off;'"
+    # entrypoint: sh -c "/u01/scripts/entrypoint.sh"
+    # stdin_open: true
+    # tty: true

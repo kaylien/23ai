@@ -12,24 +12,13 @@ check_service_health() {
   fi
 }
 
-CONTAINER_ID=$(podman ps --quiet  --no-trunc --filter "name=oracle_adb-free_1")
-
-echo "The container ID is:"
-echo "$CONTAINER_ID"
-alias adb-cli="podman exec $CONTAINER_ID adb-cli"
-echo "adb-cli command is set"
-
 # Wait for the dependent service to be healthy
-while ! check_service_health "oracle_adb-free_1"; do
+while ! check_service_health "oracle_adb-free-1"; do
   echo "Waiting for container to be healthy..."
-  sleep 20
+  sleep 5
 done
 
 echo "Container is healthy now"
-
-podman exec --interactive $CONTAINER_ID /bin/bash
-
-
 
 # Set executable permissions for your scripts
 # chmod +x /usr/local/bin/your_script1.sh
@@ -38,4 +27,3 @@ podman exec --interactive $CONTAINER_ID /bin/bash
 
 # # Execute your main command
 # exec "$@"
-

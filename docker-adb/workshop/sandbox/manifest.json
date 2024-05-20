@@ -1,0 +1,16 @@
+{
+  "workshoptitle": "Using Docker to Setup ADB-S Free - 23ai",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Lab 1: Environment Setup",
+      "description": "Setup Docker image with ADB-S Free - 23ai",
+      "filename": "../../setup/setup.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
