@@ -32,17 +32,18 @@ This lab assumes you have:
 
     ![Login succeeded](images/3-login-succeeded.png)
 
-5. Pull the zip file with our podman-compose files and scripts that we'll be running to create and configure the ADB container.
+5. Pull the zip file with our podman-compose files and scripts that we'll be running to create and configure the ADB container. We'll also be unzipping the files, then giving them the permissions to be executable within the container.
 
     ```
     <copy>
     wget https://objectstorage.ca-toronto-1.oraclecloud.com/n/c4u04/b/apex-images/o/compose.zip
+    unzip compose.zip
+    chmod ugo+x scripts
+    chmod +x scripts
     </copy>
     ```
 
-6. Unzip the file.
-
-7. Run this command to start up the container.
+6. Run this command to start up the container.
 
     ```
     <copy>
@@ -50,23 +51,16 @@ This lab assumes you have:
     </copy>
     ```
 
-8. Once that finishes, navigate into the scripts folder.
+7. Once that finishes, navigate into the scripts folder and run the source.sh file.
 
     ```
     <copy>
     cd scripts
-    </copy>
-    ```
-
-9. Run the source.sh file.
-
-    ```
-    <copy>
     ./source.sh
     </copy>
     ```
 
-10. Once it reaches SQL Developer, paste this in to run this command within the container.
+8. Once it reaches SQL Developer, paste this in to run this command within the container.
 
     ```
     <copy>
@@ -74,10 +68,10 @@ This lab assumes you have:
     </copy>
     ```
 
-11. Type exit twice to get back into your regular host.
+9. Type exit to get back into your regular host.
 
 
-12. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
+10. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
 
     ```
     <copy>

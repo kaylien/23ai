@@ -27,7 +27,7 @@ done
 
 echo "Container is healthy now"
 
-podman exec -it $CONTAINER_ID /bin/sh /u01/scripts/db_config.sh
+podman exec -it $CONTAINER_ID /bin/sh /u01/scripts/db-config.sh
 
 # podman exec --interactive $CONTAINER_ID /bin/bash
 # podman exec --it 87ac444b632a /bin/bash
