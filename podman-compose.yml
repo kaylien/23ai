@@ -1,0 +1,21 @@
+services:
+  adb-free:
+    image: yyz.ocir.io/c4u04/livelabs:latest-23ai
+    environment:
+      - WORKLOAD_TYPE=${WORKLOAD_TYPE}
+      - WALLET_PASSWORD=${WALLET_PASSWORD}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    ports:
+      - "1521:1522"
+      - "1522:1522"
+      - "8443:8443"
+      - "27017:27017"
+    volumes:
+      - "/home/oracle/scripts/db_config.sh:/scripts/db_config.sh"
+      - "/home/oracle/scripts/source.sh:/scripts/source.sh"
+    devices:
+      - /dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    restart: on-failure
+    command: sh -c "chmod +x /scripts/db_config.sh /scripts/source.sh && exec nginx -g 'daemon off;'"
