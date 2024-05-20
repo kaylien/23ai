@@ -38,8 +38,8 @@ This lab assumes you have:
     <copy>
     wget https://objectstorage.ca-toronto-1.oraclecloud.com/n/c4u04/b/apex-images/o/compose.zip
     unzip compose.zip
-    chmod ugo+x scripts
-    chmod +x scripts
+    chmod ugo+x -R scripts
+    chmod +x -R scripts
     </copy>
     ```
 
