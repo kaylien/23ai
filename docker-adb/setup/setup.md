@@ -14,15 +14,24 @@ This lab assumes you have:
 
     ![Open the terminal](images/1-open-terminal.png)
  
-2.  Run this command:
+2.  Pull the zip file with our podman-compose files and scripts that we'll be running to create and configure the ADB container. We'll also be unzipping the files, then giving them the permissions to be executable within the container.
 
     ```
     <copy>
-    podman login yyz.ocir.io
+    wget https://objectstorage.ca-toronto-1.oraclecloud.com/n/c4u04/b/apex-images/o/compose.zip
+    unzip compose.zip
+    chmod +x scripts start-container.sh
+    chmod ugo+x -R scripts start-container.sh
     </copy>
     ```
 
-    ![Docker login](images/2-docker-login.png)
+6. Run this command to begin the process of starting up the container.
+
+    ```
+    <copy>
+    ./start-container.sh
+    </copy>
+    ```
 
 3. Now that you are prompted to login, type the username in the format of ***tenancy-name***/***username***. The password will be your ***auth-token***. You will find all the necessary information in the Login Details of your LiveLabs reservation. 
 
@@ -32,35 +41,7 @@ This lab assumes you have:
 
     ![Login succeeded](images/3-login-succeeded.png)
 
-5. Pull the zip file with our podman-compose files and scripts that we'll be running to create and configure the ADB container. We'll also be unzipping the files, then giving them the permissions to be executable within the container.
-
-    ```
-    <copy>
-    wget https://objectstorage.ca-toronto-1.oraclecloud.com/n/c4u04/b/apex-images/o/compose.zip
-    unzip compose.zip
-    chmod ugo+x -R scripts
-    chmod +x -R scripts
-    </copy>
-    ```
-
-6. Run this command to start up the container.
-
-    ```
-    <copy>
-    WORKLOAD_TYPE=ATP ADMIN_PASSWORD=Welcome_12345 WALLET_PASSWORD=Welcome_12345 podman-compose up -d
-    </copy>
-    ```
-
-7. Once that finishes, navigate into the scripts folder and run the source.sh file.
-
-    ```
-    <copy>
-    cd scripts
-    ./source.sh
-    </copy>
-    ```
-
-8. Once it reaches SQL Developer, paste this in to run this command within the container.
+5. Once it reaches SQL Developer, paste this in to run this command within the container.
 
     ```
     <copy>
@@ -68,10 +49,10 @@ This lab assumes you have:
     </copy>
     ```
 
-9. Type exit to get back into your regular host.
+6. Type exit to get back into your regular host.
 
 
-10. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
+7. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
 
     ```
     <copy>
