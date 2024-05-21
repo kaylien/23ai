@@ -25,7 +25,7 @@ This lab assumes you have:
     </copy>
     ```
 
-6. Run this command to begin the process of starting up the container.
+3. Run this command to begin the process of starting up the container. Follow the instructions of the script until you reach the SQLPlus prompt.
 
     ```
     <copy>
@@ -33,15 +33,15 @@ This lab assumes you have:
     </copy>
     ```
 
-3. Now that you are prompted to login, type the username in the format of ***tenancy-name***/***username***. The password will be your ***auth-token***. You will find all the necessary information in the Login Details of your LiveLabs reservation. 
+<!-- 3. Now that you are prompted to login, type the username in the format of ***tenancy-name***/***username***. The password will be your ***auth-token***. You will find all the necessary information in the Login Details of your LiveLabs reservation. 
 
     ![Copy auth token](images/4-auth-token-copy.png)
 
 4. Hit enter, and it should say "Login Succeeded".
 
-    ![Login succeeded](images/3-login-succeeded.png)
+    ![Login succeeded](images/3-login-succeeded.png) -->
 
-5. Once it reaches SQL Developer, paste this in to run this command within the container.
+4. Once it reaches SQLPlus, paste this in to run this command within the container.
 
     ```
     <copy>
@@ -49,10 +49,10 @@ This lab assumes you have:
     </copy>
     ```
 
-6. Type exit to get back into your regular host.
+5. Type exit to get back into your regular host.
 
 
-7. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
+6. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
 
     ```
     <copy>
