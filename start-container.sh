@@ -25,16 +25,10 @@ lowercase_login="${tenancy_passvar,,}/${username_passvar,,}"
 echo "For username, enter in $lowercase_login. Do this all in lowercase."
 echo "For password, enter in your auth token copied from View Login Details."
 
-is_login_successful_passvar=N
+echo ""
+podman login yyz.ocir.io
 
 echo ""
-
-
-while is_login_successful_passvar = N do
-    podman login yyz.ocir.io
-    read -p 'Was your login successful? [Type Y or N] ' is_login_successful_passvar
-done
-
 read -p 'What workload type do you want for your ADB? [Type ATP or ADW]: ' workload_passvar
 echo ""
 echo "Make sure the following passwords you select are between 12-30 characters, with at least 1 uppercase letter, 1 lowercase letter, and 1 number."

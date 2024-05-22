@@ -33,6 +33,50 @@ This lab assumes you have:
     </copy>
     ```
 
+3. Input your tenancy name, username, and auth token as found under "View Login Details" in your LiveLabs reservation.
+
+    Output:
+    ```
+    [oracle@docker-base-image:~]$ ./start-container.sh
+    Your tenancy, username, and auth token can be found under 'View Login Info' in LiveLabs.
+
+    What tenancy is your reservation in?: <tenancy-name>
+    What is your username?: <username>
+
+    For username, enter in <tenancy-name>/<username>. Do this all in lowercase.
+    For password, enter in your auth token copied from View Login Details.
+
+    Username: <tenancy-name>/<username>
+    Password: 
+    Login Succeeded!
+    ```
+    
+4. Input your workload type, admin password, and wallet password as preferred while following the password restrictions listed in the script.
+
+    ```
+    What workload type do you want for your ADB? [Type ATP or ADW]: ATP
+
+    Make sure the following passwords you select are between 12-30 characters, with at least 1 uppercase letter, 1 lowercase letter, and 1 number.
+    What do you want your Admin Password to be?: Welcome_12345
+    What do you want your Wallet Password to be?: Welcome_12345
+
+    ```
+
+5. The container is now initializing. A podman-compose.yml script is running in the background to pull the image, start the container, mount necessary scripts onto the database.
+
+    ```
+    podman run ...
+    Trying to pull yyz.ocir.io/c4u04/livelabs:latest-23ai...
+    Getting image source signatures
+    Copying blob ... done  
+    Copying blob ... done  
+    Copying blob ... done  
+    Copying config ... done  
+    Writing manifest to image destination
+    <container-id>
+    exit code: 0
+    ```
+
 <!-- 3. Now that you are prompted to login, type the username in the format of ***tenancy-name***/***username***. The password will be your ***auth-token***. You will find all the necessary information in the Login Details of your LiveLabs reservation. 
 
     ![Copy auth token](images/4-auth-token-copy.png)
@@ -41,7 +85,27 @@ This lab assumes you have:
 
     ![Login succeeded](images/3-login-succeeded.png) -->
 
-4. Once it reaches SQLPlus, paste this in to run this command within the container.
+6. Now, we're waiting until the container is healthy so we can run the remainder of our scripts.
+
+    ```
+    The container ID is:
+    <container-id>
+
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Waiting for container to be healthy...
+    Container is healthy now
+
+    ```
+
+6. Once it reaches SQLPlus, paste this in to run this script within the container. This is going to reset where the APEX images are sourced from so APEX will function within our LiveLabs environment.
 
     ```
     <copy>
@@ -49,10 +113,41 @@ This lab assumes you have:
     </copy>
     ```
 
-5. Type exit to get back into your regular host.
+    Output:
+    ```
+    Setting up the correct APEX images directory...
+    Your TNS_ADMIN location = /u01/app/oracle/wallets/tls_wallet
+
+    SQL*Plus: Release 23.0.0.0.0 - Production on Wed May 22 00:39:58 2024
+    Version 23.4.0.24.05
+
+    Copyright (c) 1982, 2024, Oracle.  All rights reserved.
+
+    Last Successful login time: Wed May 22 2024 00:39:26 +00:00
+
+    Connected to:
+    Oracle Database 23ai Enterprise Edition Release 23.0.0.0.0 - Production
+    Version 23.4.0.24.05
+
+    SQL> @/u01/scripts/reset-image-prefix.sql
+
+    PL/SQL procedure successfully completed.
+
+    Disconnected from Oracle Database 23ai Enterprise Edition Release 23.0.0.0.0 - Production
+    Version 23.4.0.24.05
+    ```
 
 
-6. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
+7. As the script completes, make sure you copy and run the command printed out at the end so you can easily run ADB-CLI commands.
+
+    Output:
+    ```
+    Copy and run this command to setup your ADB CLI:
+    alias adb-cli='podman exec <container-id> adb-cli'
+    ```
+
+
+8. Now, the ADB container is live and you can run commands against it. You can view the list of available commands using the following command.
 
     ```
     <copy>

@@ -5,3 +5,4 @@ begin
     commit;
 end;
 /
+exit;
