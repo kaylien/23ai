@@ -57,8 +57,8 @@ This lab assumes you have:
     What workload type do you want for your ADB? [Type ATP or ADW]: ATP
 
     Make sure the following passwords you select are between 12-30 characters, with at least 1 uppercase letter, 1 lowercase letter, and 1 number.
-    What do you want your Admin Password to be?: Welcome_12345
-    What do you want your Wallet Password to be?: Welcome_12345
+    What do you want your Admin Password to be?: <admin-password>
+    What do you want your Wallet Password to be?: <wallet-password>
 
     ```
 
