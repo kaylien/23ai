@@ -53,6 +53,7 @@ This lab assumes you have:
     
 4. Input your workload type, admin password, and wallet password as preferred while following the password restrictions listed in the script.
 
+    Output:
     ```
     What workload type do you want for your ADB? [Type ATP or ADW]: ATP
 
@@ -64,6 +65,7 @@ This lab assumes you have:
 
 5. The container is now initializing. A podman-compose.yml script is running in the background to pull the image, start the container, mount necessary scripts onto the database.
 
+    Output:
     ```
     podman run ...
     Trying to pull yyz.ocir.io/c4u04/livelabs:latest-23ai...
@@ -87,6 +89,7 @@ This lab assumes you have:
 
 6. Now, we're waiting until the container is healthy so we can run the remainder of our scripts.
 
+    Output:
     ```
     The container ID is:
     <container-id>
